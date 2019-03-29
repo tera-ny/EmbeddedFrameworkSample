@@ -13,14 +13,12 @@ public protocol Network {
 }
 
 class NetworkImpl: Network {
-    private var component: URLComponents?
     private let cachePolicy: NSURLRequest.CachePolicy = NSURLRequest.CachePolicy.returnCacheDataElseLoad
     private let timeoutInterval: TimeInterval = 20
     
     func request<DataType: BaseDataModel>(model: APIModel, responseType: DataType.Type, completion: @escaping (Result<DataType?, Error>) -> Void) {
-        self.component = URLComponents(string: model.path)
         
-        guard let url = component?.url else {
+        guard let url = URL(string: model.path) else {
             completion(.failure(NSError(domain: "Url isn't active", code: 1, userInfo: nil)))
             return
         }

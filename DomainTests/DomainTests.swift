@@ -13,8 +13,7 @@ class DomainTests: XCTestCase {
 
 
     func testHuman() {
-        let jony = Human()
-        XCTAssertEqual(jony.say(), "Hello World!")
+        
     }
 
 }
