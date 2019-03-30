@@ -11,18 +11,23 @@ import XCTest
 
 class DomainTests: XCTestCase {
 
-
-    func testNetwork() {
+    func testDecode() {
         let model: APIModel = APIModel(path: "hoge", requestMethod: .get)
-        NetworkCreator.createContext().request(model: model) { (resul) in
-            guard case .success(let json) = resul else {
-                fatalError()
+        NetworkCreator.createContext().request(model: model) { (response) in
+            switch response {
+            case .failure(let error):
+                print(error)
+                XCTAssert(false)
+            case .success(let json):
+                let result = NetworkCreator.decodeToBaseDataModel(json: json!, type: User.self)
+                switch result {
+                case .failure(let error):
+                    print(error)
+                    XCTAssert(false)
+                case .success(let users):
+                    XCTAssertEqual("hoge", users[0].name)
+                }
             }
-            let result = NetworkCreator.decodeToBaseDataModel(json: json!, type: User.self)
-            guard case .success(let createdUser) = result else {
-                fatalError()
-            }
-            XCTAssertEqual("hoge", createdUser.name)
         }
     }
 
