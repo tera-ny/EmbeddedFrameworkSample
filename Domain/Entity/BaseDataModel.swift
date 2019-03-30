@@ -7,14 +7,10 @@
 //
 
 import Foundation
-public protocol BaseDataModel {
-    static func decode(json: Any) -> BaseDataModel
-}
+public protocol BaseDataModel: Codable {}
 
 public struct User: BaseDataModel {
-    public static func decode(json: Any) -> BaseDataModel {
-        return User()
-    }
-    
-    let id: String = ""
+    let userId: String
+    let name: String
+    let age: Int
 }
