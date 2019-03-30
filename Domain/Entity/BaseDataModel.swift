@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 public protocol BaseDataModel: Codable {}
 
 public struct User: BaseDataModel {
