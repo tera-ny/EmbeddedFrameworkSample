@@ -12,7 +12,7 @@ import XCTest
 class DomainTests: XCTestCase {
 
 
-    func testHuman() {
+    func testNetwork() {
         
     }
 

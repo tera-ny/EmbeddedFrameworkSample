@@ -10,6 +10,10 @@ import Foundation
 
 public class NetworkCreator {
     public static func createContext() -> Network {
+        #if DEBUG
+        return NetworkDummyData()
+        #else
         return NetworkImpl()
+        #endif
     }
 }
