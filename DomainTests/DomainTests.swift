@@ -12,7 +12,7 @@ import XCTest
 class DomainTests: XCTestCase {
 
 
-    func testNetwork() {
+    func testDecode() {
         let model: APIModel = APIModel(path: "hoge", requestMethod: .get)
         NetworkCreator.createContext().request(model: model) { (resul) in
             guard case .success(let json) = resul else {
