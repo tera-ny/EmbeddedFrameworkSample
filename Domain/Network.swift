@@ -9,14 +9,14 @@
 import Foundation
 
 public protocol Network {
-    func request<DataType: BaseDataModel>(model: APIModel, responseType: DataType.Type, completion: @escaping (Result<DataType?, Error>) -> Void)
+    func request(model: APIModel, completion: @escaping (Result<Any?, Error>) -> Void)
 }
 
 class NetworkImpl: Network {
     private let cachePolicy: NSURLRequest.CachePolicy = NSURLRequest.CachePolicy.returnCacheDataElseLoad
     private let timeoutInterval: TimeInterval = 20
     
-    func request<DataType: BaseDataModel>(model: APIModel, responseType: DataType.Type, completion: @escaping (Result<DataType?, Error>) -> Void) {
+    func request(model: APIModel, completion: @escaping (Result<Any?, Error>) -> Void) {
         
         guard let url = URL(string: model.path) else {
             completion(.failure(NSError(domain: "Url isn't active", code: 1, userInfo: nil)))
@@ -45,7 +45,7 @@ class NetworkImpl: Network {
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
-                completion(.success(self.decodeToBaseDataModel(json: json, type: responseType)))
+                completion(.success(json))
             } catch {
                 completion(.failure(error))
             }
@@ -63,17 +63,10 @@ class NetworkImpl: Network {
     private func insertParameter(request: inout URLRequest, parameters: [String: String]) throws -> Void {
         request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted)
     }
-    
-    private func decodeToBaseDataModel<DataType: BaseDataModel>(json: Any, type: DataType.Type) -> DataType? {
-        guard let data: DataType = type.decode(json: json) as? DataType else {
-            return nil
-        }
-        return data
-    }
 }
 
 class NetworkDummyData: Network {
-    func request<DataType: BaseDataModel>(model: APIModel, responseType: DataType.Type, completion: @escaping (Result<DataType?, Error>) -> Void) {
+    func request(model: APIModel, completion: @escaping (Result<Any?, Error>) -> Void) {
         completion(.failure(NSError(domain: "DummyData", code: 1, userInfo: nil)))
     }
 }
