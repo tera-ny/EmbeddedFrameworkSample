@@ -13,7 +13,17 @@ class DomainTests: XCTestCase {
 
 
     func testNetwork() {
-        
+        let model: APIModel = APIModel(path: "hoge", requestMethod: .get)
+        NetworkCreator.createContext().request(model: model) { (resul) in
+            guard case .success(let json) = resul else {
+                fatalError()
+            }
+            let result = NetworkCreator.decodeToBaseDataModel(json: json!, type: User.self)
+            guard case .success(let createdUser) = result else {
+                fatalError()
+            }
+            XCTAssertEqual("hoge", createdUser.name)
+        }
     }
 
 }
