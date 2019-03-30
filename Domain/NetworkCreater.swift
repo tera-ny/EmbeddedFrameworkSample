@@ -16,10 +16,10 @@ public class NetworkCreator {
         return NetworkImpl()
         #endif
     }
-    public static func decodeToBaseDataModel<T: BaseDataModel>(json: Data, type: T.Type) -> Result<T, Error> {
+    public static func decodeToBaseDataModel<T: BaseDataModel>(json: Data, type: T.Type) -> Result<[T], Error> {
         let decoder = JSONDecoder()
         do {
-            let model = try decoder.decode(T.self, from: json)
+            let model = try decoder.decode([T].self, from: json)
             return .success(model)
         } catch {
             return .failure(error)
