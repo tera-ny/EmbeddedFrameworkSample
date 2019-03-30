@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 public protocol BaseDataModel: Codable {}
 
 public struct User: BaseDataModel {
@@ -14,3 +15,11 @@ public struct User: BaseDataModel {
     let name: String
     let age: Int
 }
+
+let dummyUserJsonString: String = """
+{
+"userId": "lkddajflksdjflajsdlf",
+"name": "hoge",
+"age": 20
+}
+"""

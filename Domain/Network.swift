@@ -9,14 +9,14 @@
 import Foundation
 
 public protocol Network {
-    func request(model: APIModel, completion: @escaping (Result<Any?, Error>) -> Void)
+    func request(model: APIModel, completion: @escaping (Result<Data?, Error>) -> Void)
 }
 
 class NetworkImpl: Network {
     private let cachePolicy: NSURLRequest.CachePolicy = NSURLRequest.CachePolicy.returnCacheDataElseLoad
     private let timeoutInterval: TimeInterval = 20
     
-    func request(model: APIModel, completion: @escaping (Result<Any?, Error>) -> Void) {
+    func request(model: APIModel, completion: @escaping (Result<Data?, Error>) -> Void) {
         
         guard let url = URL(string: model.path) else {
             completion(.failure(NSError(domain: "Url isn't active", code: 1, userInfo: nil)))
@@ -37,18 +37,7 @@ class NetworkImpl: Network {
             if let error = error {
                 completion(.failure(error))
             }
-            
-            guard let data = data else {
-                completion(.success(nil))
-                return
-            }
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
-                completion(.success(json))
-            } catch {
-                completion(.failure(error))
-            }
+            completion(.success(data))
         }
         task.resume()
     }
@@ -66,7 +55,8 @@ class NetworkImpl: Network {
 }
 
 class NetworkDummyData: Network {
-    func request(model: APIModel, completion: @escaping (Result<Any?, Error>) -> Void) {
-        completion(.failure(NSError(domain: "DummyData", code: 1, userInfo: nil)))
+    func request(model: APIModel, completion: @escaping (Result<Data?, Error>) -> Void) {
+        completion(.success(dummyUserJsonString.data(using: String.Encoding.utf8)))
+        //completion(.failure(NSError(domain: "DummyData", code: 1, userInfo: nil)))
     }
 }
