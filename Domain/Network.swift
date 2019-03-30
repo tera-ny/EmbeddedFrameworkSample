@@ -56,6 +56,19 @@ class NetworkImpl: Network {
 
 class NetworkDummyData: Network {
     func request(model: APIModel, completion: @escaping (Result<Data?, Error>) -> Void) {
+        let dummyUserJsonString: String = """
+[
+{
+"userId": "lkddajflksdjflajsdlf",
+"name": "hoge",
+"age": 20
+},{
+"userId": "lkddajfldjksldkjslk",
+"name": "piyo",
+"age": 18
+}
+]
+"""
         completion(.success(dummyUserJsonString.data(using: String.Encoding.utf8)))
         //completion(.failure(NSError(domain: "DummyData", code: 1, userInfo: nil)))
     }
