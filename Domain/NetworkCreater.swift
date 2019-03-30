@@ -16,4 +16,13 @@ public class NetworkCreator {
         return NetworkImpl()
         #endif
     }
+    public static func decodeToBaseDataModel<T: BaseDataModel>(json: Data, type: T) -> Result<T, Error> {
+        let decoder = JSONDecoder()
+        do {
+            let model = try decoder.decode(T.self, from: json)
+            return .success(model)
+        } catch {
+            return .failure(error)
+        }
+    }
 }
