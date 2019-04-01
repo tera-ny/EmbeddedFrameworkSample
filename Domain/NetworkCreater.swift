@@ -9,18 +9,23 @@
 import Foundation
 
 public class NetworkCreator {
+    private static let decoder = JSONDecoder()
     public static func createContext() -> Network {
-        #if DEBUG
-        return NetworkDummyData()
-        #else
         return NetworkImpl()
-        #endif
     }
-    public static func decodeToBaseDataModel<T: BaseDataModel>(json: Data, type: T.Type) -> Result<[T], Error> {
-        let decoder = JSONDecoder()
+    public static func decodeToBaseDataModels<T: BaseDataModel>(json: Data, type: T.Type) -> Result<[T], Error> {
         do {
             let model = try decoder.decode([T].self, from: json)
             return .success(model)
+        } catch {
+            ///配列のDecodeに失敗した際に単体でのデコードに再挑戦
+            return decodeToBaseDataModel(json: json, type: T.self)
+        }
+    }
+    private static func decodeToBaseDataModel<T: BaseDataModel>(json: Data, type: T.Type) -> Result<[T], Error> {
+        do {
+            let model = try decoder.decode(T.self, from: json)
+            return .success([model])
         } catch {
             return .failure(error)
         }
