@@ -10,21 +10,41 @@ import Foundation
 
 public protocol BaseDataModel: Codable {}
 
-public struct User: BaseDataModel {
+public struct User: BaseDataModel, Decodable {
     let description: String?
-    let facebook_id: String?
-    let followees_count: Int
-    let followers_count: Int
-    let github_login_name: String?
+    let facebookId: String?
+    let followeesCount: Int
+    let followersCount: Int
+    let githubLoginName: String?
     let id: String
-    let items_count: Int
-    let linkedin_id: String?
+    let itemsCount: Int
+    let linkedinId: String?
     let location: String?
     let name: String?
     let organization: String?
-    let permanent_id: Int?
-    let profile_image_url: String
-    let team_only: Bool
-    let twitter_screen_name: String?
-    let website_url: String?
+    let permanentId: Int?
+    let profileImageUrl: String
+    let teamOnly: Bool
+    let twitterScreenName: String?
+    let websiteUrl: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case description
+        case facebookId = "facebook_id"
+        case followeesCount = "followees_count"
+        case followersCount = "followers_count"
+        case githubLoginName = "github_login_name"
+        case id
+        case itemsCount = "items_count"
+        case linkedinId = "linkedin_id"
+        case location
+        case name
+        case organization
+        case permanentId = "permanent_id"
+        case profileImageUrl = "profile_image_url"
+        case teamOnly = "team_only"
+        case twitterScreenName = "twitter_screen_name"
+        case websiteUrl = "website_url"
+    }
 }
+
