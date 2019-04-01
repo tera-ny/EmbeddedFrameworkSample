@@ -12,49 +12,23 @@ import XCTest
 class DomainTests: XCTestCase {
 
     func testDecode() {
-        let model: APIModel = APIModel(path: "https://qiita.com/api/v2/users/haruevorun", requestMethod: .get, header: ["Host":"qiita.com"])
-        let networkExpectation: XCTestExpectation? =
-            self.expectation(description: "connect API")
-        let context = NetworkCreator.createContext()
-        debugPrint("request...")
-        context.request(model: model) { (response) in
-            defer {
-                networkExpectation?.fulfill()
-            }
-            debugPrint("connected...")
+        let model: APIModel = APIModel(path: "hoge", requestMethod: .get)
+        NetworkCreator.createContext().request(model: model) { (response) in
             switch response {
             case .failure(let error):
-                debugPrint(error)
+                print(error)
                 XCTAssert(false)
             case .success(let json):
-                guard let json = json else {
-                    XCTAssert(true)
-                    return
-                }
-                let result = NetworkCreator.decodeToBaseDataModels(json: json, type: User.self)
+                let result = NetworkCreator.decodeToBaseDataModel(json: json!, type: User.self)
                 switch result {
                 case .failure(let error):
-                    debugPrint(error)
+                    print(error)
                     XCTAssert(false)
                 case .success(let users):
-                    XCTAssertEqual(1, users.count)
-                    XCTAssertEqual("こんにちは", users[0].description)
+                    XCTAssertEqual("hoge", users[0].name)
                 }
             }
         }
-        
-        self.waitForExpectations(timeout: 3, handler: nil)
     }
 
-}
-func debugPrint(_ item: Any?) {
-    guard let item = item else {
-        return
-    }
-    #if DEBUG
-    print(item)
-    #else
-    print("this method is debug only")
-    #endif
-    
 }
