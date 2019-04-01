@@ -10,7 +10,7 @@ import Foundation
 
 public protocol BaseDataModel: Codable {}
 
-public struct User: BaseDataModel, Decodable {
+public struct User: BaseDataModel {
     let description: String?
     let facebookId: String?
     let followeesCount: Int
@@ -48,3 +48,44 @@ public struct User: BaseDataModel, Decodable {
     }
 }
 
+public struct Item: BaseDataModel {
+    let renderedBody: String
+    let body: String
+    let coediting: Bool
+    let commentsCount: Int
+    let createdAt: String
+    let group: String
+    let id: String
+    let likesCount: Int
+    let isPrivate: Bool
+    let reactionsCount: Int
+    let tags: [Tag]
+    let title: String
+    let updatedAt: String
+    let url: String
+    let user: User
+    let pageViewsCount: Int?
+    private enum CodingKeys: String, CodingKey {
+        case renderedBody = "rendered_body"
+        case body
+        case coediting
+        case commentsCount = "comments_count"
+        case createdAt = "created_at"
+        case group
+        case id
+        case likesCount = "likes_count"
+        case isPrivate = "private"
+        case reactionsCount = "reactions_count"
+        case tags
+        case title
+        case updatedAt = "update_at"
+        case url
+        case user
+        case pageViewsCount = "page_view_count"
+    }
+    
+    struct Tag: Codable {
+        let name: String
+        let versions: [String]
+    }
+}
