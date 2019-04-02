@@ -27,18 +27,12 @@ class DomainTests: XCTestCase {
                 debugPrint(error)
                 XCTAssert(false)
             case .success(let json):
-                guard let json = json else {
-                    XCTAssert(true)
-                    return
-                }
-                let result = NetworkCreator.decodeToBaseDataModels(json: json, type: User.self)
-                switch result {
-                case .failure(let error):
-                    debugPrint(error)
-                    XCTAssert(false)
-                case .success(let users):
-                    XCTAssertEqual(1, users.count)
-                    XCTAssertEqual("こんにちは", users[0].description)
+                do {
+                    let models = try NetworkParser.decodeToBaseDataModels(json: json, type: User.self)
+                    XCTAssertEqual(1, models.count)
+                    XCTAssertEqual("こんにちは", models[0].description)
+                } catch {
+                    print(error)
                 }
             }
         }
