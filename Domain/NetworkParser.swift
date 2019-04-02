@@ -10,6 +10,7 @@ import Foundation
 
 public class NetworkParser {
     private static let decoder = JSONDecoder()
+    
     public static func decodeToBaseDataModels<T: BaseDataModel>(json: Data?, type: T.Type) throws -> [T] {
         guard let json = json else {
             throw NSError(domain: "json is nil", code: 1, userInfo: nil)
@@ -21,6 +22,7 @@ public class NetworkParser {
             return try decodeToBaseDataModel(json: json, type: T.self)
         }
     }
+    
     private static func decodeToBaseDataModel<T: BaseDataModel>(json: Data, type: T.Type) throws -> [T] {
         return [try decoder.decode(T.self, from: json)]
     }
