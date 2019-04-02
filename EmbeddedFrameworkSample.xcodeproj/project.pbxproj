@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7E6E2BB7224E3AC4006B86F4 /* BaseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6E2BB6224E3AC4006B86F4 /* BaseDataModel.swift */; };
+		7E38F67622523410000FFD2D /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38F67522523410000FFD2D /* DataModel.swift */; };
 		7E6E2BB9224E44ED006B86F4 /* NetworkCreater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6E2BB8224E44ED006B86F4 /* NetworkCreater.swift */; };
 		7EEA768F224E0416009196BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA768E224E0416009196BE /* AppDelegate.swift */; };
 		7EEA7691224E0416009196BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA7690224E0416009196BE /* ViewController.swift */; };
@@ -78,7 +78,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7E6E2BB6224E3AC4006B86F4 /* BaseDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataModel.swift; sourceTree = "<group>"; };
+		7E38F67522523410000FFD2D /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		7E6E2BB8224E44ED006B86F4 /* NetworkCreater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCreater.swift; sourceTree = "<group>"; };
 		7EEA768B224E0416009196BE /* EmbeddedFrameworkSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmbeddedFrameworkSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EEA768E224E0416009196BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 		7E6E2BB5224E39F2006B86F4 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				7E6E2BB6224E3AC4006B86F4 /* BaseDataModel.swift */,
+				7E38F67522523410000FFD2D /* DataModel.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -459,8 +459,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E6E2BB7224E3AC4006B86F4 /* BaseDataModel.swift in Sources */,
 				7EEA76E4224E0969009196BE /* Network.swift in Sources */,
+				7E38F67622523410000FFD2D /* DataModel.swift in Sources */,
 				7EEA76E6224E09A4009196BE /* APIModel.swift in Sources */,
 				7E6E2BB9224E44ED006B86F4 /* NetworkCreater.swift in Sources */,
 			);
