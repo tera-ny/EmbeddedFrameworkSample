@@ -16,6 +16,7 @@ class DomainTests: XCTestCase {
         let networkExpectation: XCTestExpectation? =
             self.expectation(description: "connect API")
         let context = NetworkCreator.createContext()
+        
         debugPrint("request...")
         context.request(model: model) { (response) in
             defer {
@@ -39,6 +40,7 @@ class DomainTests: XCTestCase {
         
         self.waitForExpectations(timeout: 3, handler: nil)
     }
+    
     func testUsers() {
         let page = 1
         let per = 20
@@ -46,6 +48,7 @@ class DomainTests: XCTestCase {
         let networkExpectation: XCTestExpectation? =
             self.expectation(description: "connect API")
         let context = NetworkCreator.createContext()
+        
         debugPrint("request...")
         context.request(model: model) { (response) in
             defer {
@@ -61,13 +64,12 @@ class DomainTests: XCTestCase {
                     XCTAssert(true)
                     return
                 }
-                let result = NetworkCreator.decodeToBaseDataModels(json: json, type: User.self)
-                switch result {
-                case .failure(let error):
-                    debugPrint(error)
+                do {
+                    let result = try NetworkParser.decodeToBaseDataModels(json: json, type: User.self)
+                    XCTAssertEqual(result.count, per)
+                } catch {
+                    print(error)
                     XCTAssert(false)
-                case .success(let users):
-                    XCTAssertEqual(per, users.count)
                 }
             }
         }
@@ -85,5 +87,4 @@ func debugPrint(_ item: Any?) {
     #else
     print("this method is debug only")
     #endif
-    
 }
