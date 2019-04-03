@@ -104,7 +104,7 @@ class DomainTests: XCTestCase {
                 XCTAssert(false)
             }
         }
-        self.waitForExpectations(timeout: 3, handler: nil)
+        self.waitForExpectations(timeout: 10, handler: nil)
     }
 }
 func debugPrint(_ item: Any?) {
