@@ -10,9 +10,9 @@ import XCTest
 @testable import Domain
 
 class DomainTests: XCTestCase {
-
+    let domain: String = "https://qiita.com"
     func testDecode() {
-        let model: APIModel = APIModel(path: "https://qiita.com/api/v2/users/haruevorun", requestMethod: .get, header: ["Host":"qiita.com"])
+        let model: APIModel = APIModel(path: "\(domain)/api/v2/users/haruevorun", requestMethod: .get, header: ["Host":"qiita.com"])
         let networkExpectation: XCTestExpectation? =
             self.expectation(description: "connect API")
         let context = NetworkCreator.createContext()
@@ -44,7 +44,7 @@ class DomainTests: XCTestCase {
     func testUsers() {
         let page = 1
         let per = 20
-        let model: APIModel = APIModel(path: "https://qiita.com/api/v2/users?page=\(page)&per_page=\(per)", requestMethod: .get, header: ["Host":"qiita.com"])
+        let model: APIModel = APIModel(path: "\(domain)/api/v2/users?page=\(page)&per_page=\(per)", requestMethod: .get, header: ["Host":"qiita.com"])
         let networkExpectation: XCTestExpectation? =
             self.expectation(description: "connect API")
         let context = NetworkCreator.createContext()
@@ -76,7 +76,36 @@ class DomainTests: XCTestCase {
         
         self.waitForExpectations(timeout: 3, handler: nil)
     }
-
+    
+    func testItems() {
+        let page: Int = 1
+        let per: Int = 20
+        let path: String = "\(domain)/api/v2/items?page=\(page)&per_page=\(per)"
+        let model = APIModel(path: path, requestMethod: .get)
+        let context = NetworkCreator.createContext()
+        let networkExpectation: XCTestExpectation? =
+            self.expectation(description: "connect API")
+        context.request(model: model) { (result) in
+            defer {
+                networkExpectation?.fulfill()
+            }
+            guard case .success(let json) = result else {
+                if case .failure(let error) = result {
+                    debugPrint(error)
+                }
+                XCTAssert(false)
+                return
+            }
+            do {
+                let items: [Item] = try NetworkParser.decodeToBaseDataModels(json: json, type: Item.self)
+                XCTAssertEqual(items.count, per)
+            } catch {
+                debugPrint(error)
+                XCTAssert(false)
+            }
+        }
+        self.waitForExpectations(timeout: 3, handler: nil)
+    }
 }
 func debugPrint(_ item: Any?) {
     guard let item = item else {
