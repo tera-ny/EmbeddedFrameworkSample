@@ -54,7 +54,7 @@ public struct Item: BaseDataModel {
     let coediting: Bool
     let commentsCount: Int
     let createdAt: String
-    let group: String
+    let group: Group?
     let id: String
     let likesCount: Int
     let isPrivate: Bool
@@ -78,14 +78,30 @@ public struct Item: BaseDataModel {
         case reactionsCount = "reactions_count"
         case tags
         case title
-        case updatedAt = "update_at"
+        case updatedAt = "updated_at"
         case url
         case user
-        case pageViewsCount = "page_view_count"
+        case pageViewsCount = "page_views_count"
     }
-    
     struct Tag: Codable {
         let name: String
         let versions: [String]
+    }
+    struct Group: Codable {
+        let createdAt: String
+        let id: String
+        let name: String
+        let isPrivate: Bool
+        let updatedAt: String
+        let urlName: String
+        
+        private enum CodingKeys: String, CodingKey {
+            case createdAt = "created_at"
+            case id
+            case name
+            case isPrivate = "private"
+            case updatedAt = "updated_at"
+            case urlName = "url_name"
+        }
     }
 }
