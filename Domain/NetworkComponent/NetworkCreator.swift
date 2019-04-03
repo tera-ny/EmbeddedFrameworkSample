@@ -9,6 +9,7 @@
 import Foundation
 
 class NetworkCreator {
+    static let domain: String = "https://qiita.com"
     public static func create() -> Network {
         return NetworkImpl()
     }
