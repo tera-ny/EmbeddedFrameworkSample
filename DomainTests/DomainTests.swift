@@ -10,7 +10,6 @@ import XCTest
 @testable import Domain
 
 class DomainTests: XCTestCase {
-    let domain: String = "https://qiita.com"
     func testDecode() {
         let model: APIModel = APIModel(path: "\(domain)/api/v2/users/haruevorun", requestMethod: .get, header: ["Host":"qiita.com"])
         let networkExpectation: XCTestExpectation? =

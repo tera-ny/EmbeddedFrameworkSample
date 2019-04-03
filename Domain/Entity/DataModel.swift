@@ -11,6 +11,7 @@ import Foundation
 public protocol BaseDataModel: Codable {}
 
 public struct User: BaseDataModel {
+    private let path: String = "\(NetworkCreator.domain)/api/v2/users"
     let description: String?
     let facebookId: String?
     let followeesCount: Int
@@ -45,6 +46,36 @@ public struct User: BaseDataModel {
         case teamOnly = "team_only"
         case twitterScreenName = "twitter_screen_name"
         case websiteUrl = "website_url"
+    }
+    
+    func fetch(page: Int, per: Int, completion: @escaping (Result<[User], Error>) -> Void) {
+        let path = "\(self.path)?page=\(page)&per_page=\(per)"
+        let model = APIModel(path: path, requestMethod: .get)
+        self.fetch(model: model, completion: completion)
+    }
+    
+    func fetch(userId id: String, completion: @escaping (Result<[User], Error>) -> Void) {
+        let path = "\(self.path)/\(id)"
+        let model = APIModel(path: path, requestMethod: .get)
+        self.fetch(model: model, completion: completion)
+    }
+    
+    private func fetch(model: APIModel, completion: @escaping (Result<[User], Error>) -> Void) {
+        let network = NetworkCreator.create()
+        network.request(model: model) { (result) in
+            guard case .success(let json) = result else {
+                if case .failure(let error) = result {
+                    completion(.failure(error))
+                }
+                return
+            }
+            do {
+                let users = try NetworkParser.decodeToBaseDataModels(json: json, type: User.self)
+                completion(.success(users))
+            } catch {
+                completion(.failure(error))
+            }
+        }
     }
 }
 
