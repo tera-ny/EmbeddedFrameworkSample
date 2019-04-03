@@ -48,19 +48,19 @@ public struct User: BaseDataModel {
         case websiteUrl = "website_url"
     }
     
-    func fetch(page: Int, per: Int, completion: @escaping (Result<[User], Error>) -> Void) {
+    static func fetch(page: Int, per: Int, completion: @escaping (Result<[User], Error>) -> Void) {
         let path = "\(self.path)?page=\(page)&per_page=\(per)"
         let model = APIModel(path: path, requestMethod: .get)
         self.fetch(model: model, completion: completion)
     }
     
-    func fetch(userId id: String, completion: @escaping (Result<[User], Error>) -> Void) {
+    static func fetch(userId id: String, completion: @escaping (Result<[User], Error>) -> Void) {
         let path = "\(self.path)/\(id)"
         let model = APIModel(path: path, requestMethod: .get)
         self.fetch(model: model, completion: completion)
     }
     
-    private func fetch(model: APIModel, completion: @escaping (Result<[User], Error>) -> Void) {
+    private static func fetch(model: APIModel, completion: @escaping (Result<[User], Error>) -> Void) {
         let network = NetworkCreator.create()
         network.request(model: model) { (result) in
             guard case .success(let json) = result else {
