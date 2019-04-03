@@ -46,6 +46,25 @@ public struct User: BaseDataModel {
         case twitterScreenName = "twitter_screen_name"
         case websiteUrl = "website_url"
     }
+    
+    func request(page: Int, per: Int, completion: @escaping (Result<[User], Error>) -> Void) {
+        let network = NetworkCreator.create()
+        let model = APIModel(path: network.domain, requestMethod: .get)
+        network.request(model: model) { (result) in
+            guard case .success(let json) = result else {
+                if case .failure(let error) = result {
+                    completion(.failure(error))
+                }
+                return
+            }
+            do {
+                let users = try NetworkParser.decodeToBaseDataModels(json: json, type: User.self)
+                completion(.success(users))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+    }
 }
 
 public struct Item: BaseDataModel {

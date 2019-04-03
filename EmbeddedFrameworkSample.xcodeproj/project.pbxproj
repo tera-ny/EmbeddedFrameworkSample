@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7E38F67622523410000FFD2D /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E38F67522523410000FFD2D /* DataModel.swift */; };
-		7ECBB0912254660D0009CF24 /* NetworkCreater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECBB08D2254660D0009CF24 /* NetworkCreater.swift */; };
+		7E7686C92254C646003C8709 /* NetworkCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7686C82254C646003C8709 /* NetworkCreator.swift */; };
 		7ECBB0922254660D0009CF24 /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECBB08E2254660D0009CF24 /* APIModel.swift */; };
 		7ECBB0932254660D0009CF24 /* NetworkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECBB08F2254660D0009CF24 /* NetworkParser.swift */; };
 		7ECBB0942254660D0009CF24 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECBB0902254660D0009CF24 /* Network.swift */; };
@@ -80,7 +80,7 @@
 
 /* Begin PBXFileReference section */
 		7E38F67522523410000FFD2D /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
-		7ECBB08D2254660D0009CF24 /* NetworkCreater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCreater.swift; sourceTree = "<group>"; };
+		7E7686C82254C646003C8709 /* NetworkCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCreator.swift; sourceTree = "<group>"; };
 		7ECBB08E2254660D0009CF24 /* APIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
 		7ECBB08F2254660D0009CF24 /* NetworkParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkParser.swift; sourceTree = "<group>"; };
 		7ECBB0902254660D0009CF24 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -157,9 +157,9 @@
 		7ECBB08C2254660D0009CF24 /* NetworkComponent */ = {
 			isa = PBXGroup;
 			children = (
-				7ECBB08D2254660D0009CF24 /* NetworkCreater.swift */,
 				7ECBB08E2254660D0009CF24 /* APIModel.swift */,
 				7ECBB08F2254660D0009CF24 /* NetworkParser.swift */,
+				7E7686C82254C646003C8709 /* NetworkCreator.swift */,
 				7ECBB0902254660D0009CF24 /* Network.swift */,
 			);
 			path = NetworkComponent;
@@ -473,8 +473,8 @@
 				7ECBB0942254660D0009CF24 /* Network.swift in Sources */,
 				7E38F67622523410000FFD2D /* DataModel.swift in Sources */,
 				7ECBB0932254660D0009CF24 /* NetworkParser.swift in Sources */,
+				7E7686C92254C646003C8709 /* NetworkCreator.swift in Sources */,
 				7ECBB0922254660D0009CF24 /* APIModel.swift in Sources */,
-				7ECBB0912254660D0009CF24 /* NetworkCreater.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
