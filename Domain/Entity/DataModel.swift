@@ -46,6 +46,10 @@ public struct User: BaseDataModel {
         case twitterScreenName = "twitter_screen_name"
         case websiteUrl = "website_url"
     }
+    
+    public static func request() {
+        
+    }
 }
 
 public struct Item: BaseDataModel {
