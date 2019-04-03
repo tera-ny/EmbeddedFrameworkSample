@@ -11,7 +11,7 @@ import Foundation
 public protocol BaseDataModel: Codable {}
 
 public struct User: BaseDataModel {
-    private let path: String = "\(NetworkCreator.domain)/api/v2/users"
+    private static let path: String = "\(NetworkCreator.domain)/api/v2/users"
     let description: String?
     let facebookId: String?
     let followeesCount: Int
