@@ -76,6 +76,27 @@ class DomainTests: XCTestCase {
         self.waitForExpectations(timeout: 3, handler: nil)
     }
     
+    func testFetchUserWithId() {
+        let id: String = "haruevorun"
+        let networkExpectation: XCTestExpectation? =
+            self.expectation(description: "connect API")
+        User.fetch(userId: id) { (result) in
+            defer {
+                networkExpectation?.fulfill()
+            }
+            guard case .success(let users) = result else {
+                if case .failure(let error) = result {
+                    debugPrint(error)
+                }
+                XCTAssert(false)
+                return
+            }
+            XCTAssertEqual("こんにちは", users[0].description)
+        }
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    
     func testItems() {
         let page: Int = 1
         let per: Int = 20
