@@ -11,10 +11,10 @@ import XCTest
 
 class DomainTests: XCTestCase {
     func testDecode() {
-        let model: APIModel = APIModel(path: "\(domain)/api/v2/users/haruevorun", requestMethod: .get, header: ["Host":"qiita.com"])
+        let model: APIModel = APIModel(path: "\(NetworkCreator.domain)/api/v2/users/haruevorun", requestMethod: .get, header: ["Host":"qiita.com"])
         let networkExpectation: XCTestExpectation? =
             self.expectation(description: "connect API")
-        let context = NetworkCreator.createContext()
+        let context = NetworkCreator.create()
         
         debugPrint("request...")
         context.request(model: model) { (response) in
@@ -43,10 +43,10 @@ class DomainTests: XCTestCase {
     func testUsers() {
         let page = 1
         let per = 20
-        let model: APIModel = APIModel(path: "\(domain)/api/v2/users?page=\(page)&per_page=\(per)", requestMethod: .get, header: ["Host":"qiita.com"])
+        let model: APIModel = APIModel(path: "\(NetworkCreator.domain)/api/v2/users?page=\(page)&per_page=\(per)", requestMethod: .get, header: ["Host":"qiita.com"])
         let networkExpectation: XCTestExpectation? =
             self.expectation(description: "connect API")
-        let context = NetworkCreator.createContext()
+        let context = NetworkCreator.create()
         
         debugPrint("request...")
         context.request(model: model) { (response) in
@@ -76,12 +76,33 @@ class DomainTests: XCTestCase {
         self.waitForExpectations(timeout: 3, handler: nil)
     }
     
+    func testFetchUserWithId() {
+        let id: String = "haruevorun"
+        let networkExpectation: XCTestExpectation? =
+            self.expectation(description: "connect API")
+        User.fetch(userId: id) { (result) in
+            defer {
+                networkExpectation?.fulfill()
+            }
+            guard case .success(let users) = result else {
+                if case .failure(let error) = result {
+                    debugPrint(error)
+                }
+                XCTAssert(false)
+                return
+            }
+            XCTAssertEqual("こんにちは", users[0].description)
+        }
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    
     func testItems() {
         let page: Int = 1
         let per: Int = 20
-        let path: String = "\(domain)/api/v2/items?page=\(page)&per_page=\(per)"
+        let path: String = "\(NetworkCreator.domain)/api/v2/items?page=\(page)&per_page=\(per)"
         let model = APIModel(path: path, requestMethod: .get)
-        let context = NetworkCreator.createContext()
+        let context = NetworkCreator.create()
         let networkExpectation: XCTestExpectation? =
             self.expectation(description: "connect API")
         context.request(model: model) { (result) in
