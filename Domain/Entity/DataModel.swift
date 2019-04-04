@@ -70,7 +70,7 @@ public struct User: BaseDataModel {
                 return
             }
             do {
-                let users = try NetworkParser.decodeToBaseDataModels(json: json, type: User.self)
+                let users = try NetworkParser.decodeToBaseDataModels(json: json, type: self)
                 completion(.success(users))
             } catch {
                 completion(.failure(error))
@@ -80,6 +80,7 @@ public struct User: BaseDataModel {
 }
 
 public struct Item: BaseDataModel {
+    private static let path: String = "\(NetworkCreator.domain)/api/v2/items"
     let renderedBody: String
     let body: String
     let coediting: Bool
@@ -133,6 +134,33 @@ public struct Item: BaseDataModel {
             case isPrivate = "private"
             case updatedAt = "updated_at"
             case urlName = "url_name"
+        }
+    }
+    
+    static func fetch(page: Int, per: Int, query: String?, completion: @escaping (Result<[Item], Error>) -> Void) {
+        let path: String = {
+            let path: String = "\(self.path)?page=\(page)&per_page=\(per)"
+            return path
+        }()
+        let model = APIModel(path: path, requestMethod: .get)
+        self.fetch(model: model, completion: completion)
+    }
+    
+    private static func fetch(model: APIModel, completion: @escaping (Result<[Item], Error>) -> Void) {
+        let context = NetworkCreator.create()
+        context.request(model: model) { (result) in
+            guard case .success(let json) = result else {
+                if case .failure(let error) = result {
+                    completion(.failure(error))
+                }
+                return
+            }
+            do {
+                let items: [Item] = try NetworkParser.decodeToBaseDataModels(json: json, type: self)
+                completion(.success(items))
+            } catch {
+                completion(.failure(error))
+            }
         }
     }
 }
