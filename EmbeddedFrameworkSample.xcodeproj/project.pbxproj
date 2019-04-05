@@ -29,6 +29,8 @@
 		B97A1A1C2256FFC300C42721 /* Auth.h in Headers */ = {isa = PBXBuildFile; fileRef = B97A1A0C2256FFC300C42721 /* Auth.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B97A1A1F2256FFC300C42721 /* Auth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B97A1A0A2256FFC300C42721 /* Auth.framework */; };
 		B97A1A202256FFC300C42721 /* Auth.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B97A1A0A2256FFC300C42721 /* Auth.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B97A1A282257002400C42721 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A1A272257002400C42721 /* Auth.swift */; };
+		B97A1A2A22572A0200C42721 /* AuthWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A1A2922572A0200C42721 /* AuthWebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +138,8 @@
 		B97A1A122256FFC300C42721 /* AuthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B97A1A192256FFC300C42721 /* AuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTests.swift; sourceTree = "<group>"; };
 		B97A1A1B2256FFC300C42721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B97A1A272257002400C42721 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		B97A1A2922572A0200C42721 /* AuthWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +301,8 @@
 			isa = PBXGroup;
 			children = (
 				B97A1A0C2256FFC300C42721 /* Auth.h */,
+				B97A1A272257002400C42721 /* Auth.swift */,
+				B97A1A2922572A0200C42721 /* AuthWebView.swift */,
 				B97A1A0D2256FFC300C42721 /* Info.plist */,
 			);
 			path = Auth;
@@ -494,6 +500,7 @@
 					};
 					B97A1A092256FFC300C42721 = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
 					};
 					B97A1A112256FFC300C42721 = {
 						CreatedOnToolsVersion = 10.2;
@@ -630,6 +637,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B97A1A282257002400C42721 /* Auth.swift in Sources */,
+				B97A1A2A22572A0200C42721 /* AuthWebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -830,6 +839,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8446Z6F5D6;
 				INFOPLIST_FILE = EmbeddedFrameworkSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -849,6 +859,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8446Z6F5D6;
 				INFOPLIST_FILE = EmbeddedFrameworkSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1046,6 +1057,7 @@
 		B97A1A212256FFC300C42721 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1065,6 +1077,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = g4zeru.Auth;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1075,6 +1088,7 @@
 		B97A1A222256FFC300C42721 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
