@@ -58,6 +58,16 @@
                ReferencedContainer = "container:EmbeddedFrameworkSample.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B97A1A112256FFC300C42721"
+               BuildableName = "AuthTests.xctest"
+               BlueprintName = "AuthTests"
+               ReferencedContainer = "container:EmbeddedFrameworkSample.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
