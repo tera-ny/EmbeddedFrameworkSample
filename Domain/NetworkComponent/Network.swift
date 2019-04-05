@@ -9,12 +9,10 @@
 import Foundation
 
 public protocol Network {
-    var domain: String { get }
     func request(model: APIModel, completion: @escaping (Result<Data?, Error>) -> Void)
 }
 
 class NetworkImpl: Network {
-    let domain: String = "https://qiita.com"
     private let cachePolicy: NSURLRequest.CachePolicy = NSURLRequest.CachePolicy.returnCacheDataElseLoad
     private let timeoutInterval: TimeInterval = 20
     private var requestCount: Int = 0
@@ -63,8 +61,6 @@ class NetworkImpl: Network {
 }
 
 class NetworkDummyUserData: Network {
-    let domain: String = "https://hogehoge.com"
-    
     func request(model: APIModel, completion: @escaping (Result<Data?, Error>) -> Void) {
         let dummyUserJsonString: String = """
 {
@@ -92,8 +88,6 @@ class NetworkDummyUserData: Network {
 }
 
 class NetworkTimeLineDummyData: Network {
-    var domain: String = "https://piyopiyo.net"
-    
     func request(model: APIModel, completion: @escaping (Result<Data?, Error>) -> Void) {
         let dummyString = """
 [

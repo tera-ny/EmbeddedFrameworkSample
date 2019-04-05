@@ -10,102 +10,49 @@ import XCTest
 @testable import Domain
 
 class DomainTests: XCTestCase {
-    func testDecode() {
-        let model: APIModel = APIModel(path: "\(domain)/api/v2/users/haruevorun", requestMethod: .get, header: ["Host":"qiita.com"])
-        let networkExpectation: XCTestExpectation? =
-            self.expectation(description: "connect API")
-        let context = NetworkCreator.createContext()
-        
-        debugPrint("request...")
-        context.request(model: model) { (response) in
-            defer {
-                networkExpectation?.fulfill()
-            }
-            debugPrint("connected...")
-            switch response {
-            case .failure(let error):
-                debugPrint(error)
-                XCTAssert(false)
-            case .success(let json):
-                do {
-                    let models = try NetworkParser.decodeToBaseDataModels(json: json, type: User.self)
-                    XCTAssertEqual(1, models.count)
-                    XCTAssertEqual("こんにちは", models[0].description)
-                } catch {
-                    print(error)
-                }
-            }
-        }
-        
-        self.waitForExpectations(timeout: 3, handler: nil)
-    }
     
-    func testUsers() {
-        let page = 1
-        let per = 20
-        let model: APIModel = APIModel(path: "\(domain)/api/v2/users?page=\(page)&per_page=\(per)", requestMethod: .get, header: ["Host":"qiita.com"])
+    func testFetchUserWithId() {
+        let id: String = "haruevorun"
         let networkExpectation: XCTestExpectation? =
             self.expectation(description: "connect API")
-        let context = NetworkCreator.createContext()
-        
-        debugPrint("request...")
-        context.request(model: model) { (response) in
+        User.fetch(userId: id) { (result) in
             defer {
                 networkExpectation?.fulfill()
             }
-            debugPrint("connected...")
-            switch response {
-            case .failure(let error):
-                debugPrint(error)
-                XCTAssert(false)
-            case .success(let json):
-                guard let json = json else {
-                    XCTAssert(true)
-                    return
-                }
-                do {
-                    let result = try NetworkParser.decodeToBaseDataModels(json: json, type: User.self)
-                    XCTAssertEqual(result.count, per)
-                } catch {
-                    print(error)
-                    XCTAssert(false)
-                }
-            }
-        }
-        
-        self.waitForExpectations(timeout: 3, handler: nil)
-    }
-    
-    func testItems() {
-        let page: Int = 1
-        let per: Int = 20
-        let path: String = "\(domain)/api/v2/items?page=\(page)&per_page=\(per)"
-        let model = APIModel(path: path, requestMethod: .get)
-        let context = NetworkCreator.createContext()
-        let networkExpectation: XCTestExpectation? =
-            self.expectation(description: "connect API")
-        context.request(model: model) { (result) in
-            defer {
-                networkExpectation?.fulfill()
-            }
-            guard case .success(let json) = result else {
+            guard case .success(let users) = result else {
                 if case .failure(let error) = result {
                     debugPrint(error)
                 }
                 XCTAssert(false)
                 return
             }
-            do {
-                let items: [Item] = try NetworkParser.decodeToBaseDataModels(json: json, type: Item.self)
-                XCTAssertEqual(items.count, per)
-            } catch {
-                debugPrint(error)
-                XCTAssert(false)
+            XCTAssertEqual("こんにちは", users[0].description)
+        }
+        self.waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testfetchItems() {
+        let page: Int = 1
+        let per: Int = 10
+        let networkExpectation: XCTestExpectation? =
+            self.expectation(description: "connect API")
+        Item.fetch(page: page, per: per, query: nil) { (result) in
+            defer {
+                networkExpectation?.fulfill()
             }
+            guard case .success(let items) = result else {
+                if case .failure(let error) = result {
+                    debugPrint(error)
+                }
+                XCTAssert(false)
+                return
+            }
+            XCTAssertEqual(items.count, per)
         }
         self.waitForExpectations(timeout: 10, handler: nil)
     }
 }
+
 func debugPrint(_ item: Any?) {
     guard let item = item else {
         return
