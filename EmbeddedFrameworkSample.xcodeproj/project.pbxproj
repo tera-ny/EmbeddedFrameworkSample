@@ -29,8 +29,8 @@
 		B97A1A1C2256FFC300C42721 /* Auth.h in Headers */ = {isa = PBXBuildFile; fileRef = B97A1A0C2256FFC300C42721 /* Auth.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B97A1A1F2256FFC300C42721 /* Auth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B97A1A0A2256FFC300C42721 /* Auth.framework */; };
 		B97A1A202256FFC300C42721 /* Auth.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B97A1A0A2256FFC300C42721 /* Auth.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B97A1A282257002400C42721 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A1A272257002400C42721 /* Auth.swift */; };
 		B97A1A2A22572A0200C42721 /* AuthWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A1A2922572A0200C42721 /* AuthWebView.swift */; };
+		B97A1A2C2257547300C42721 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A1A2B2257547300C42721 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,8 +138,8 @@
 		B97A1A122256FFC300C42721 /* AuthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B97A1A192256FFC300C42721 /* AuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTests.swift; sourceTree = "<group>"; };
 		B97A1A1B2256FFC300C42721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B97A1A272257002400C42721 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		B97A1A2922572A0200C42721 /* AuthWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWebView.swift; sourceTree = "<group>"; };
+		B97A1A2B2257547300C42721 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +251,7 @@
 			children = (
 				7EEA768E224E0416009196BE /* AppDelegate.swift */,
 				7EEA7690224E0416009196BE /* ViewController.swift */,
+				B97A1A2B2257547300C42721 /* HomeViewController.swift */,
 				7EEA7692224E0416009196BE /* Main.storyboard */,
 				7EEA7695224E041C009196BE /* Assets.xcassets */,
 				7EEA7697224E041C009196BE /* LaunchScreen.storyboard */,
@@ -301,7 +302,6 @@
 			isa = PBXGroup;
 			children = (
 				B97A1A0C2256FFC300C42721 /* Auth.h */,
-				B97A1A272257002400C42721 /* Auth.swift */,
 				B97A1A2922572A0200C42721 /* AuthWebView.swift */,
 				B97A1A0D2256FFC300C42721 /* Info.plist */,
 			);
@@ -594,6 +594,7 @@
 			files = (
 				7EEA7691224E0416009196BE /* ViewController.swift in Sources */,
 				7EEA768F224E0416009196BE /* AppDelegate.swift in Sources */,
+				B97A1A2C2257547300C42721 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,7 +638,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B97A1A282257002400C42721 /* Auth.swift in Sources */,
 				B97A1A2A22572A0200C42721 /* AuthWebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,8 +9,26 @@
 import Foundation
 import UIKit
 import WebKit
+public protocol AuthWebViewDelegate: class {
+    func didfinishRequest(token: String)
+    func didCatchError(error: Error)
+}
+public extension AuthWebViewDelegate {
+    func didCatchError(error: Error) {
+        print(error)
+    }
+}
 
 public class AuthWebViewController: UIViewController {
+    public struct Auth {
+        let redirectUrl: URL
+        let clientID: String
+        public init(redirect: URL, clientID: String) {
+            self.redirectUrl = redirect
+            self.clientID = clientID
+        }
+    }
+    
     private let backGroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white
@@ -19,23 +37,16 @@ public class AuthWebViewController: UIViewController {
     }()
     private var webView: WKWebView!
     
-    let auth: Auth
+    private let auth: Auth = Auth(redirect: URL(string: "https://g4zeru_swift.qiita_client_application.com")!, clientID: "897dc498d5c4987376b5bf74db70d6e5d9362ee3")
+    public weak var delegate: AuthWebViewDelegate?
     
     private let accessURL = "https://qiita.com/api/v2/oauth/authorize"
-    
-    public init(auth: Auth) {
-        self.auth = auth
-        
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+   
     override public func loadView() {
         super.loadView()
         self.view = self.backGroundView
     }
+    
     override public func viewDidLoad() {
         self.webView = WKWebView(frame: self.view.frame)
         self.webView.navigationDelegate = self
@@ -54,7 +65,8 @@ extension AuthWebViewController: WKNavigationDelegate {
             print("finished")
             print(requestURL.query!)
             decisionHandler(WKNavigationActionPolicy.cancel)
-            return
+            let querys = requestURL.querys()
+            self.delegate?.didfinishRequest(token: querys["code"] ?? String())
         } else {
             decisionHandler(WKNavigationActionPolicy.allow)
         }
@@ -62,8 +74,8 @@ extension AuthWebViewController: WKNavigationDelegate {
 }
 
 extension URL {
-    func query() -> [String: String?] {
-        var params: [String: String?] = [:]
+    func querys() -> [String: String] {
+        var params: [String: String] = [:]
         guard let comp = NSURLComponents(string: self.absoluteString) else {
             return params
         }
@@ -71,7 +83,7 @@ extension URL {
             return params
         }
         for item in queryItems {
-            params[item.name] = item.value
+            params[item.name] = item.value ?? String()
         }
         return params
     }
