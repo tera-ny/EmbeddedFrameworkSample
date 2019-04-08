@@ -20,7 +20,7 @@ target 'EmbeddedFrameworkSample' do
 
   # Pods for EmbeddedFrameworkSample
 
-  pod 'SnapKit', '~> 4.0.0'
+  pod 'SnapKit'
 
   target 'EmbeddedFrameworkSampleTests' do
     inherit! :search_paths
