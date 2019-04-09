@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import Domain
+import SnapKit
 
 class QiitaItemsTableViewCell: UITableViewCell {
+    
+    let titleLabel = UILabel()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,6 +23,10 @@ class QiitaItemsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func set(item: Item) {
+        
     }
 
 }

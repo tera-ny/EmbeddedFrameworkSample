@@ -13,7 +13,7 @@
 		7ECBB0932254660D0009CF24 /* NetworkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECBB08F2254660D0009CF24 /* NetworkParser.swift */; };
 		7ECBB0942254660D0009CF24 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECBB0902254660D0009CF24 /* Network.swift */; };
 		7EEA768F224E0416009196BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA768E224E0416009196BE /* AppDelegate.swift */; };
-		7EEA7691224E0416009196BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA7690224E0416009196BE /* ViewController.swift */; };
+		7EEA7691224E0416009196BE /* QiitaItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA7690224E0416009196BE /* QiitaItemsViewController.swift */; };
 		7EEA7694224E0416009196BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EEA7692224E0416009196BE /* Main.storyboard */; };
 		7EEA7696224E041C009196BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EEA7695224E041C009196BE /* Assets.xcassets */; };
 		7EEA7699224E041C009196BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EEA7697224E041C009196BE /* LaunchScreen.storyboard */; };
@@ -27,6 +27,8 @@
 		95ACBC7563BA3B36D021E278 /* Pods_EmbeddedFrameworkSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506AD7765A0905B400DA233B /* Pods_EmbeddedFrameworkSample.framework */; };
 		981C9402B8548A2150D68295 /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BC55B88C5E5D1707FDA85D /* Pods_Domain.framework */; };
 		B642191B688A7F62921F0CA1 /* Pods_EmbeddedFrameworkSampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E07FDD048D5CFA898EBB87B5 /* Pods_EmbeddedFrameworkSampleTests.framework */; };
+		B98FB2CF225C4B27001A40D3 /* QiitaItemsDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98FB2CE225C4B27001A40D3 /* QiitaItemsDataStore.swift */; };
+		B98FB2D1225C4C1B001A40D3 /* QiitaItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98FB2D0225C4C1B001A40D3 /* QiitaItemsTableViewCell.swift */; };
 		BD816A60BAB29D61462E763A /* Pods_DomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECC832AB6ED6DAFC736BC95D /* Pods_DomainTests.framework */; };
 		F6833E668B588BC7B68455A1 /* Pods_EmbeddedFrameworkSampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3902B8727BF3C8615680883C /* Pods_EmbeddedFrameworkSampleUITests.framework */; };
 /* End PBXBuildFile section */
@@ -96,7 +98,7 @@
 		7ECBB0902254660D0009CF24 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		7EEA768B224E0416009196BE /* EmbeddedFrameworkSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmbeddedFrameworkSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EEA768E224E0416009196BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7EEA7690224E0416009196BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7EEA7690224E0416009196BE /* QiitaItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaItemsViewController.swift; sourceTree = "<group>"; };
 		7EEA7693224E0416009196BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7EEA7695224E041C009196BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7EEA7698224E041C009196BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -114,6 +116,8 @@
 		7EEA76D0224E048D009196BE /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
 		7EEA76D2224E048D009196BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A8F67CD12FD260C630B9267 /* Pods-EmbeddedFrameworkSampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmbeddedFrameworkSampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-EmbeddedFrameworkSampleUITests/Pods-EmbeddedFrameworkSampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B98FB2CE225C4B27001A40D3 /* QiitaItemsDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaItemsDataStore.swift; sourceTree = "<group>"; };
+		B98FB2D0225C4C1B001A40D3 /* QiitaItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaItemsTableViewCell.swift; sourceTree = "<group>"; };
 		C042B834687C885CD963648E /* Pods-DomainTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomainTests.release.xcconfig"; path = "Target Support Files/Pods-DomainTests/Pods-DomainTests.release.xcconfig"; sourceTree = "<group>"; };
 		C99A63764311FE418BA09A37 /* Pods-EmbeddedFrameworkSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmbeddedFrameworkSample.release.xcconfig"; path = "Target Support Files/Pods-EmbeddedFrameworkSample/Pods-EmbeddedFrameworkSample.release.xcconfig"; sourceTree = "<group>"; };
 		D00DF6DFFAB56CF5E53ACF2D /* Pods-EmbeddedFrameworkSampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmbeddedFrameworkSampleTests.release.xcconfig"; path = "Target Support Files/Pods-EmbeddedFrameworkSampleTests/Pods-EmbeddedFrameworkSampleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -232,7 +236,9 @@
 			isa = PBXGroup;
 			children = (
 				7EEA768E224E0416009196BE /* AppDelegate.swift */,
-				7EEA7690224E0416009196BE /* ViewController.swift */,
+				7EEA7690224E0416009196BE /* QiitaItemsViewController.swift */,
+				B98FB2CE225C4B27001A40D3 /* QiitaItemsDataStore.swift */,
+				B98FB2D0225C4C1B001A40D3 /* QiitaItemsTableViewCell.swift */,
 				7EEA7692224E0416009196BE /* Main.storyboard */,
 				7EEA7695224E041C009196BE /* Assets.xcassets */,
 				7EEA7697224E041C009196BE /* LaunchScreen.storyboard */,
@@ -642,7 +648,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EEA7691224E0416009196BE /* ViewController.swift in Sources */,
+				B98FB2CF225C4B27001A40D3 /* QiitaItemsDataStore.swift in Sources */,
+				B98FB2D1225C4C1B001A40D3 /* QiitaItemsTableViewCell.swift in Sources */,
+				7EEA7691224E0416009196BE /* QiitaItemsViewController.swift in Sources */,
 				7EEA768F224E0416009196BE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
