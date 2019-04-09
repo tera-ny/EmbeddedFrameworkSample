@@ -8,8 +8,10 @@
 
 import Foundation
 import UIKit
-import Domain
+import SnapKit
 
-class ViewController: UIViewController {
+class QiitaItemsViewController: UIViewController {
+    let tableView: UITableView = UITableView()
+    
 }
 

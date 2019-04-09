@@ -20,7 +20,7 @@ target 'EmbeddedFrameworkSample' do
 
   # Pods for EmbeddedFrameworkSample
 
-  pod 'SnapKit'
+  pod 'SnapKit', :git => 'https://github.com/SnapKit/SnapKit.git', :branch => 'develop'
 
   target 'EmbeddedFrameworkSampleTests' do
     inherit! :search_paths
