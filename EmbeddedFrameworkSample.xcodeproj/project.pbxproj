@@ -293,7 +293,6 @@
 				8A8F67CD12FD260C630B9267 /* Pods-EmbeddedFrameworkSampleUITests.debug.xcconfig */,
 				7A261520338F468DB31D26BD /* Pods-EmbeddedFrameworkSampleUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
