@@ -6,7 +6,7 @@ target 'Domain' do
   use_frameworks!
 
   # Pods for Domain
-  pod 'Alamofire'
+  pod 'Alamofire', '~> 5.0.0-beta.3'
 
   target 'DomainTests' do
     inherit! :search_paths
