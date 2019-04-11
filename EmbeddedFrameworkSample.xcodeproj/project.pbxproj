@@ -27,6 +27,7 @@
 		7EEA76D7224E048D009196BE /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7EEA76C1224E048C009196BE /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		897BD63EB7C2D2B71C7FB6D0 /* Pods_EmbeddedFrameworkSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5597286D6BEC86910249EC3 /* Pods_EmbeddedFrameworkSample.framework */; };
 		A4368D3C9E33D54BCF78A777 /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45C165A3E3E49B26DF47948 /* Pods_Domain.framework */; };
+		B980E85E225EEA8000E71157 /* NetworkAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980E85D225EEA8000E71157 /* NetworkAlamofire.swift */; };
 		DF3DCA98337C6C80330C27FE /* Pods_DomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E0A34545CB0ED15979E1D3 /* Pods_DomainTests.framework */; };
 		E57CD5DBDFF250B8A6B58093 /* Pods_EmbeddedFrameworkSampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081FE007B3236C5E17DCE1B2 /* Pods_EmbeddedFrameworkSampleUITests.framework */; };
 /* End PBXBuildFile section */
@@ -118,6 +119,7 @@
 		7F50D668F4921F9D41073BB0 /* Pods-EmbeddedFrameworkSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmbeddedFrameworkSample.release.xcconfig"; path = "Target Support Files/Pods-EmbeddedFrameworkSample/Pods-EmbeddedFrameworkSample.release.xcconfig"; sourceTree = "<group>"; };
 		9F6413DA6FEA5A4828B0CE92 /* Pods-EmbeddedFrameworkSampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmbeddedFrameworkSampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-EmbeddedFrameworkSampleUITests/Pods-EmbeddedFrameworkSampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A5597286D6BEC86910249EC3 /* Pods_EmbeddedFrameworkSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EmbeddedFrameworkSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B980E85D225EEA8000E71157 /* NetworkAlamofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAlamofire.swift; sourceTree = "<group>"; };
 		C09A68BAAE9FAAE9EEF7DE00 /* Pods-Domain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Domain.debug.xcconfig"; path = "Target Support Files/Pods-Domain/Pods-Domain.debug.xcconfig"; sourceTree = "<group>"; };
 		C6E0A34545CB0ED15979E1D3 /* Pods_DomainTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DomainTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E45C165A3E3E49B26DF47948 /* Pods_Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,7 +199,6 @@
 				9F6413DA6FEA5A4828B0CE92 /* Pods-EmbeddedFrameworkSampleUITests.debug.xcconfig */,
 				686AC52AEDD4CBC1D9872704 /* Pods-EmbeddedFrameworkSampleUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -216,6 +217,7 @@
 				7ECBB08F2254660D0009CF24 /* NetworkParser.swift */,
 				7E7686C82254C646003C8709 /* NetworkCreator.swift */,
 				7ECBB0902254660D0009CF24 /* Network.swift */,
+				B980E85D225EEA8000E71157 /* NetworkAlamofire.swift */,
 			);
 			path = NetworkComponent;
 			sourceTree = "<group>";
@@ -673,6 +675,7 @@
 				7ECBB0932254660D0009CF24 /* NetworkParser.swift in Sources */,
 				7E7686C92254C646003C8709 /* NetworkCreator.swift in Sources */,
 				7ECBB0922254660D0009CF24 /* APIModel.swift in Sources */,
+				B980E85E225EEA8000E71157 /* NetworkAlamofire.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
