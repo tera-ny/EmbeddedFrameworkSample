@@ -48,13 +48,13 @@ public struct User: BaseDataModel {
         case websiteUrl = "website_url"
     }
     
-    static func fetch(page: Int, per: Int, completion: @escaping (Result<[User], Error>) -> Void) {
+    public static func fetch(page: Int, per: Int, completion: @escaping (Result<[User], Error>) -> Void) {
         let path = "\(self.path)?page=\(page)&per_page=\(per)"
         let model = APIModel(path: path, requestMethod: .get)
         self.fetch(model: model, completion: completion)
     }
     
-    static func fetch(userId id: String, completion: @escaping (Result<[User], Error>) -> Void) {
+    public static func fetch(userId id: String, completion: @escaping (Result<[User], Error>) -> Void) {
         let path = "\(self.path)/\(id)"
         let model = APIModel(path: path, requestMethod: .get)
         self.fetch(model: model, completion: completion)
@@ -137,7 +137,7 @@ public struct Item: BaseDataModel {
         }
     }
     
-    static func fetch(page: Int, per: Int, query: String?, completion: @escaping (Result<[Item], Error>) -> Void) {
+    public static func fetch(page: Int, per: Int, query: String?, completion: @escaping (Result<[Item], Error>) -> Void) {
         let path: String = {
             let path: String = "\(self.path)?page=\(page)&per_page=\(per)"
             return path
